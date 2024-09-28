@@ -39,21 +39,8 @@ python main.py
 
 
 🌐 Deployment on Koyeb
-
+https://app.koyeb.com/deploy?name=alphauserbot&type=git&repository=utkarshdubey2008%2FAlphauserbot&branch=main&builder=buildpack&run_command=python+main.py&env%5B%5D=&ports=8000%3Bhttp%3B%2F
 Easily deploy your bot with a single click!
-
-
-
-How to Deploy:
-
-1. Click the "Deploy to Koyeb" button.
-
-
-2. Configure your environment variables.
-
-
-3. Your bot will be running in minutes!
-
 
 
 📈 Contributing
