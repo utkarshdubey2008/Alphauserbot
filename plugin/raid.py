@@ -1,7 +1,5 @@
 from telethon import events
-from telethon.tl.types import PeerUser
 import random
-import asyncio
 
 # List of vulgar abuses
 abuses = [
@@ -54,7 +52,7 @@ abuses = [
     "Teri maa ki khud ki kya hai? 🍌",
 ]
 
-@bot.on(events.NewMessage(pattern=r'\.raid (\w+)'))
+@client.on(events.NewMessage(pattern=r'\.raid (\w+)'))
 async def raid(event):
     username = event.pattern_match.group(1)
     if username:
@@ -62,6 +60,6 @@ async def raid(event):
     else:
         await event.reply("Please provide a username to raid.")
 
-@bot.on(events.NewMessage(pattern=r'\.draid'))
+@client.on(events.NewMessage(pattern=r'\.draid'))
 async def stop_raid(event):
     await event.reply("Raid has been stopped.")
