@@ -1,66 +1,69 @@
-
-
-```markdown
 # 📱 Telegram Userbot
 
-Welcome to the **Telegram Userbot**! This powerful bot is designed to enhance your Telegram experience, offering a wide range of features and functionalities tailored to your needs.
+Welcome to the **Telegram Userbot**! This powerful bot enhances your Telegram experience with a wide range of features tailored to your needs.
 
 ## 🚀 Features
 
 - **🌐 User-Friendly Interface**  
-  Navigate effortlessly through an intuitive design that prioritizes user experience.
+  Navigate effortlessly with an intuitive design.
 
 - **🔒 Security First**  
-  Your privacy is our priority! Enjoy a secure environment while using the bot.
+  Your privacy is our priority!
 
 - **⚡ Fast and Efficient**  
-  Experience quick responses and seamless interactions that make your tasks easier.
+  Quick responses and seamless interactions.
 
 - **🛠️ Customizable Options**  
-  Tailor the bot to fit your preferences and enjoy a personalized experience.
+  Tailor the bot to fit your preferences.
 
 ## 📜 Installation
-
-Follow these simple steps to get your userbot up and running:
 
 1. **Clone the Repository**  
    ```bash
    git clone https://github.com/yourusername/youruserbot.git
-   ```
 
-2. **Install Dependencies**  
-   Make sure to install all required libraries:
-   ```bash
-   pip install -r requirements.txt
-   ```
+2. Install Dependencies
 
-3. **Configuration**  
-   Configure your bot settings by editing the `config.py` file. Fill in your bot token and other necessary details.
+pip install -r requirements.txt
 
-4. **Run the Bot**  
-   Start the bot with the following command:
-   ```bash
-   python main.p
-   ```
 
-##DEPLOYMENT
-#DEPLOY ON KOYEB
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=alphauserbot&type=git&repository=utkarshdubey2008%2FAlphauserbot&branch=main&builder=buildpack&run_command=python+main.py&env%5B%5D=&ports=8000%3Bhttp%3B%2F)
+3. Configuration
+Edit the config.py file to fill in your bot token and settings.
 
-## 📈 Contributing
 
-We welcome contributions! If you have suggestions or improvements, feel free to fork the repository and submit a pull request. Let's make this bot even better together! 🤝
+4. Run the Bot
+Start with:
 
-## 📞 Support
+python main.py
 
-For any questions or issues, please reach out through our support channel or open an issue in the repository.
 
-## 📣 Acknowledgements
 
-Special thanks to the contributors and the Alpha Community for their support and inspiration. 🌟
+🌐 Deployment on Koyeb
 
----
+Easily deploy your bot with a single click!
 
-**Enjoy your enhanced Telegram experience with our userbot!**  
 
-.
+
+How to Deploy:
+
+1. Click the "Deploy to Koyeb" button.
+
+
+2. Configure your environment variables.
+
+
+3. Your bot will be running in minutes!
+
+
+
+📈 Contributing
+
+We welcome contributions! Fork the repo and submit a pull request. Let's improve this bot together! 🤝
+
+📞 Support
+
+For questions or issues, reach out through our support channel or open an issue.
+
+📣 Acknowledgements
+
+Thanks to contributors and the Alpha Community for their support! 🌟
