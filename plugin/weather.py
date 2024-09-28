@@ -1,11 +1,11 @@
 from telethon import events
 import requests
+from config import OPENWEATHER_API_KEY
 
 @events.register(events.NewMessage(pattern=r'\.weather (.+)'))
 async def weather(event):
     city = event.pattern_match.group(1)
-    api_key = "YOUR_OPENWEATHER_API_KEY"
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={OPENWEATHER_API_KEY}&units=metric"
     
     response = requests.get(url)
     data = response.json()
