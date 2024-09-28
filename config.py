@@ -1,3 +1,7 @@
+# config.py
+
+import os
+
 # Configuration file for the Telegram user bot
 
 # Your API ID (obtainable from my.telegram.org)
