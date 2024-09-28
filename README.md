@@ -40,8 +40,12 @@ Follow these simple steps to get your userbot up and running:
 4. **Run the Bot**  
    Start the bot with the following command:
    ```bash
-   python main.py
+   python main.p
    ```
+
+##DEPLOYMENT
+#DEPLOY ON KOYEB
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=alphauserbot&type=git&repository=utkarshdubey2008%2FAlphauserbot&branch=main&builder=buildpack&run_command=python+main.py&env%5B%5D=&ports=8000%3Bhttp%3B%2F)
 
 ## 📈 Contributing
 
