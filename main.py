@@ -1,14 +1,15 @@
 from telethon import TelegramClient, events
+from telethon.sessions import StringSession  # Import StringSession
 import os
 import importlib
 from config import API_ID, API_HASH, SESSION_STRING
 
-# Initialize the client using the session string
-client = TelegramClient(SESSION_STRING, API_ID, API_HASH)
+# Initialize the client using StringSession
+client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
 async def main():
     try:
-        await client.start()  # Starts the client using SESSION_STRING from config
+        await client.start()  # No need to pass SESSION_STRING here
         print("Client started successfully.")
 
         # Import all plugins after the client starts successfully
@@ -26,7 +27,6 @@ async def main():
 @client.on(events.NewMessage)
 async def handler(event):
     try:
-        # Print the received message text
         print(f"Received message: {event.message.text}")
     except Exception as e:
         print(f"An error occurred while processing an event: {e}")
