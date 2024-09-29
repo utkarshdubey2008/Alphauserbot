@@ -1,12 +1,12 @@
-# config.py
+import os
+import environs
 
-# Your API ID and API Hash from https://my.telegram.org
-API_ID = 'YOUR_API_ID'  # Replace with your API ID
-API_HASH = 'YOUR_API_HASH'  # Replace with your API Hash
+try:
+    env = environs.Env()
+    env.read_env("./.env")
+except FileNotFoundError:
+    print("No .env file found, using os.environ.")
 
-# Session string for logging in
-SESSION_STRING = 'YOUR_SESSION_STRING'  # Replace with your session string
-
-# Optional: Define any other configurations
-# Example:
-# ADMIN_USER_IDS = [123456789, 987654321]  # List of admin user IDs
+API_ID = int(os.getenv("API_ID", env.int("API_ID")))
+API_HASH = os.getenv("API_HASH", env.str("API_HASH"))
+STRINGSESSION = os.getenv("STRINGSESSION", env.str("SESSION_STRING"))
