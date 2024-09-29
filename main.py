@@ -1,7 +1,5 @@
 from telethon import TelegramClient, events
-from telethon.sessions import StringSession  # Import StringSession
-import os
-import importlib
+from telethon.sessions import StringSession
 from config import API_ID, API_HASH, SESSION_STRING
 
 # Initialize the client using StringSession
@@ -9,10 +7,10 @@ client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
 async def main():
     try:
-        await client.start()  # No need to pass SESSION_STRING here
+        await client.start()
         print("Client started successfully.")
 
-        # Import all plugins after the client starts successfully
+        # Load plugins
         for filename in os.listdir('plugin'):
             if filename.endswith('.py'):
                 try:
@@ -29,7 +27,7 @@ async def handler(event):
     try:
         print(f"Received message: {event.message.text}")
     except Exception as e:
-        print(f"An error occurred while processing an event: {e}")
+        print(f"An error occurred while processing the event: {e}")
 
 if __name__ == '__main__':
     try:
