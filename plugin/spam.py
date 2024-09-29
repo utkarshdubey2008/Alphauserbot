@@ -1,5 +1,3 @@
-# plugins/spam.py
-
 from telethon import events
 import asyncio
 
@@ -39,7 +37,7 @@ async def spam(event):
             await event.reply(f"📬 {message}")  # Send the spam message
             await asyncio.sleep(1)  # Adjust the delay as needed
 
-            # Optionally provide progress feedback
+            # Optionally provide progress feedback every 10 messages
             if (i + 1) % 10 == 0:
                 await event.reply(f"📢 Sent {i + 1} messages so far... Keep going! 💪")
 
@@ -48,6 +46,8 @@ async def spam(event):
             await event.reply("✅ Finished sending all spam messages. Hope you enjoyed! 🎉")
     except ValueError:
         await event.reply("❌ Invalid input. Please enter a valid number followed by the message.")
+    except Exception as e:
+        await event.reply(f"❌ An unexpected error occurred: {str(e)}")  # Handle any other exceptions
 
 @events.register(events.NewMessage(pattern=r'\.stop'))
 async def stop(event):
@@ -59,4 +59,4 @@ async def stop(event):
         spam_sessions.pop(event.sender_id)  # Remove the user from active sessions
         await event.reply("🛑 Stopped the spam session. You have the power! ✊")
     else:
-        await event.reply("❌ You don't have an active spam session. Relax and enjoy! 🌈")
+        await event.reply("❌ You don't have an active spam session. Relax and enjoy!")
