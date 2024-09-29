@@ -1,8 +1,12 @@
 # config.py
-API_ID = '29264175'
-API_HASH = '0a3e78a4cd29529769faf5fe588f6de7'
-SESSION_STRING = '1BVtsOMMBu3xe1ZW0g9EiC24eZzCPmnX14nRc4s51_U8J5BO0DKYQNzaFgVGiFnApvFHQ4FxFcjfQ-_ZWFTtGTte7f77uPS12qYd7cqUtPs0DkgO9bzHN1LQy64GxaX1Jw4k_5rwwOiNm_PmK2MDV09-e1OMKTeyzvptOA6_O1xtHUE_w8ANai1NjrlJTVeQ04paoK8QiV0lGmDIubYucl7extnM1hozkNd5D0fqiapEoSeON7Y0I7LkalcY8-0EOQGa87hD8tSzd3xD2d7nPS4CJEDqOav7dIFZ8tZ4Pg13ZFaNPpMJ-owRECP8mmGcr-kPE6Q7y300BlSpFlsQYfiaw5xXa07o='
-GIPHY_API_KEY = 'ihU8VjICHGtv5jkDV2JCRUXtDtcIjH3P'
-OPENWEATHER_API_KEY = 'a2836b789a4f503ca5d5bb99d0199220'
-UNSPLASH_ACCESS_KEY = 'UP3kakd-xGv0uhv1CbANIXxPiNfyp7XjW1_yB-8gzY0'
-OMDB_API_KEY = 'http://www.omdbapi.com/?i=tt3896198&apikey=e3631b99'
+
+# Your API ID and API Hash from https://my.telegram.org
+API_ID = 'YOUR_API_ID'  # Replace with your API ID
+API_HASH = 'YOUR_API_HASH'  # Replace with your API Hash
+
+# Session string for logging in
+SESSION_STRING = 'YOUR_SESSION_STRING'  # Replace with your session string
+
+# Optional: Define any other configurations
+# Example:
+# ADMIN_USER_IDS = [123456789, 987654321]  # List of admin user IDs
