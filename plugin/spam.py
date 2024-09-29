@@ -9,7 +9,7 @@ spam_sessions = {}
 @events.register(events.NewMessage(pattern=r'\.spam (\d+) (.+)'))
 async def spam(event):
     """Starts sending a specified number of spam messages.
-    
+
     Parameters:
     count (int): The number of messages to send.
     message (str): The message content to spam.
@@ -30,28 +30,33 @@ async def spam(event):
             return
 
         spam_sessions[event.sender_id] = (count, message)  # Track the count and message
-        await event.reply(f"🔄 Starting to spam: '{message}' for {count} times.")
+        await event.reply(f"🔄 Starting to spam: '{message}' for {count} times! 🚀")
 
         for i in range(count):
             if event.sender_id not in spam_sessions:
-                await event.reply("🛑 Spam session stopped by user.")
+                await event.reply("🛑 The spam session has been stopped. Take a breather! 🌬️")
                 break  # Stop if the user has stopped the session
-            await event.reply(message)  # Send the spam message
+            await event.reply(f"📬 {message}")  # Send the spam message
             await asyncio.sleep(1)  # Adjust the delay as needed
 
             # Optionally provide progress feedback
             if (i + 1) % 10 == 0:
-                await event.reply(f"📬 Sent {i + 1} messages...")
+                await event.reply(f"📢 Sent {i + 1} messages so far... Keep going! 💪")
 
-        await event.reply("✅ Finished sending all spam messages.")
+        if event.sender_id in spam_sessions:
+            spam_sessions.pop(event.sender_id)  # Clean up after finishing
+            await event.reply("✅ Finished sending all spam messages. Hope you enjoyed! 🎉")
     except ValueError:
         await event.reply("❌ Invalid input. Please enter a valid number followed by the message.")
 
 @events.register(events.NewMessage(pattern=r'\.stop'))
 async def stop(event):
     """Stops the active spam session."""
+    # Delete the command message
+    await event.delete()
+
     if event.sender_id in spam_sessions:
         spam_sessions.pop(event.sender_id)  # Remove the user from active sessions
-        await event.reply("🛑 Stopped the spam session.")
+        await event.reply("🛑 Stopped the spam session. You have the power! ✊")
     else:
-        await event.reply("❌ You don't have an active spam session.")
+        await event.reply("❌ You don't have an active spam session. Relax and enjoy! 🌈")
