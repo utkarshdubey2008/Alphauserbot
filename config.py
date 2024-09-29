@@ -9,4 +9,4 @@ except FileNotFoundError:
 
 API_ID = int(os.getenv("API_ID", env.int("API_ID")))
 API_HASH = os.getenv("API_HASH", env.str("API_HASH"))
-STRINGSESSION = os.getenv("STRINGSESSION", env.str("SESSION_STRING"))
+SESSION_STRING = os.getenv("SESSION_STRING", env.str("SESSION_STRING"))
