@@ -3,11 +3,12 @@ import os
 import importlib
 from config import API_ID, API_HASH, SESSION_STRING
 
-client = TelegramClient('user_bot', API_ID, API_HASH)
+# Initialize the client using the session string
+client = TelegramClient(SESSION_STRING, API_ID, API_HASH)
 
 async def main():
     try:
-        await client.start(SESSION_STRING)
+        await client.start()  # No need to pass SESSION_STRING again, it's used during initialization
         print("Client started successfully.")
 
         # Import all plugins after the client starts successfully
