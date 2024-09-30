@@ -1,40 +1,46 @@
-from telethon import TelegramClient, events
-from telethon.sessions import StringSession
 import os
 import importlib
+import logging
+from pyrogram import Client, filters
 from config import API_ID, API_HASH, SESSION_STRING
 
-# Initialize the client using StringSession
-client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-async def main():
-    try:
-        await client.start()  # Start the client
-        print("Client started successfully.")
+# Initialize the client
+app = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
-        # Import all plugins after the client starts successfully
-        for filename in os.listdir('plugin'):
-            if filename.endswith('.py'):
-                try:
-                    importlib.import_module(f'plugin.{filename[:-3]}')
-                    print(f"Successfully imported plugin: {filename}")
-                except Exception as e:
-                    print(f"Failed to import plugin {filename}: {e}")
+async def start_client():
+    """Start the Pyrogram client and import plugins."""
+    await app.start()
+    logger.info("Client started successfully.")
 
-    except Exception as e:
-        print(f"An error occurred while starting the client: {e}")
+    await import_plugins()  # Import all plugins after the client starts successfully
 
-@client.on(events.NewMessage)
-async def handler(event):
-    try:
-        print(f"Received message: {event.message.text}")
-    except Exception as e:
-        print(f"An error occurred while processing an event: {e}")
+async def import_plugins():
+    """Import all plugin modules from the 'plugin' directory."""
+    plugin_dir = 'plugin'
+    
+    for filename in os.listdir(plugin_dir):
+        if filename.endswith('.py'):
+            try:
+                importlib.import_module(f'{plugin_dir}.{filename[:-3]}')
+                logger.info(f"Successfully imported plugin: {filename}")
+            except Exception as e:
+                logger.error(f"Failed to import plugin {filename}: {e}")
+
+@app.on_message(filters.text)
+async def handler(client, message):
+    """Handle new incoming messages."""
+    logger.info(f"Received message: {message.text}")
+    # Additional handling logic can be added here if needed.
 
 if __name__ == '__main__':
     try:
-        client.loop.run_until_complete(main())
+        app.run()  # Start the Pyrogram client
+        logger.info("Bot is running...")
+    except KeyboardInterrupt:
+        logger.info("Bot has been stopped manually.")
     except Exception as e:
-        print(f"An error occurred while running the bot: {e}")
-    finally:
-        client.run_until_disconnected()
+        logger.error(f"An error occurred while running the bot: {e}")
