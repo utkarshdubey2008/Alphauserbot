@@ -1,5 +1,13 @@
 import os
+from pyrogram import Client
 
-API_ID = int(os.getenv('API_ID'))  # Get API ID from environment variable
-API_HASH = os.getenv('API_HASH')  # Get API Hash from environment variable
-SESSION_STRING = os.getenv('SESSION_STRING')  # Get string session from environment variable
+# Retrieve credentials from environment variables
+API_ID = int(os.getenv('API_ID'))  # Replace with your actual API ID
+API_HASH = os.getenv('API_HASH')    # Replace with your actual API Hash
+
+# Create the Pyrogram Client instance using in-memory session
+app = Client(
+    ":memory:",  # Use in-memory session
+    api_id=API_ID,
+    api_hash=API_HASH
+)
