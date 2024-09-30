@@ -5,17 +5,16 @@ from pyrogram import Client, filters
 from config import API_ID, API_HASH, SESSION_STRING
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Initialize the client
+# Initialize the Pyrogram client
 app = Client(SESSION_STRING, api_id=API_ID, api_hash=API_HASH)
 
 async def start_client():
     """Start the Pyrogram client and import plugins."""
     await app.start()
     logger.info("Client started successfully.")
-
     await import_plugins()  # Import all plugins after the client starts successfully
 
 async def import_plugins():
@@ -34,7 +33,7 @@ async def import_plugins():
 async def handler(client, message):
     """Handle new incoming messages."""
     logger.info(f"Received message: {message.text}")
-    # Additional handling logic can be added here if needed.
+    # You can add additional handling logic here if needed.
 
 if __name__ == '__main__':
     try:
@@ -44,3 +43,5 @@ if __name__ == '__main__':
         logger.info("Bot has been stopped manually.")
     except Exception as e:
         logger.error(f"An error occurred while running the bot: {e}")
+    finally:
+        logger.info("Cleaning up resources and shutting down.")
